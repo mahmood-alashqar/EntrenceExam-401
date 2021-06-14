@@ -44,43 +44,41 @@ export class Digimon extends Component {
     this.setState({ digimonData: updateRequest.data, showUpdateForm: false })
   }
   render() {
-    const rendering = <Row xs={2} md={4} >
-      {this.state.digimonData.map((data, index) => {
-        return (<div key={index}>
-          <Card style={{ width: '18rem', height: '35rem' }}>
-            <Card.Img src={data.img} alt='' />
-            <Card.Body>
-              <Card.Title>{data.name}</Card.Title>
-              <Card.Text>{data.level}</Card.Text>
-
-            </Card.Body>
-            <Card.Footer>
-              <Button onClick={() => { this.deleteItem(data.slug) }} variant='danger'>Delete</Button>
-              <Button onClick={() => { this.updateSlug(data.slug, data.img) }} variant='primary'>Update</Button>
-
-            </Card.Footer>
-          </Card>
-
-
-
-        </div>)
-      })
-
-      }</Row>
-    const form = <Form onSubmit={(e) => this.updateItem(e)}>
-      <Form.Label>Name</Form.Label>
-      <Form.Control onChange={this.updateName} type='text' />
-      <Form.Label>Image_Url</Form.Label>
-      <Form.Control onChange={this.updateimg} type='text' />
-      <Form.Label>Level</Form.Label>
-      <Form.Control onChange={this.updatelevel} type='text' />
-      <Button variant='primary' type='submit' value='update'>Update Now</Button>
-    </Form>
     return (
       <div>
-        {rendering}
+        {<Row xs={2} md={4} >
+          {this.state.digimonData.map((data, index) => {
+            return (<div key={index}>
+              <Card style={{ width: '18rem', height: '35rem' }}>
+                <Card.Img src={data.img} alt='' />
+                <Card.Body>
+                  <Card.Title>{data.name}</Card.Title>
+                  <Card.Text>{data.level}</Card.Text>
+
+                </Card.Body>
+                <Card.Footer>
+                  <Button onClick={() => { this.deleteItem(data.slug) }} variant='danger'>Delete</Button>
+                  <Button onClick={() => { this.updateSlug(data.slug, data.img) }} variant='primary'>Update</Button>
+
+                </Card.Footer>
+              </Card>
+
+
+
+            </div>)
+          })
+
+          }</Row>}
         {this.state.showUpdateForm &&
-          form
+          <Form onSubmit={(e) => this.updateItem(e)}>
+            <Form.Label>Name</Form.Label>
+            <Form.Control onChange={this.updateName} type='text' />
+            <Form.Label>Image_Url</Form.Label>
+            <Form.Control onChange={this.updateimg} type='text' />
+            <Form.Label>Level</Form.Label>
+            <Form.Control onChange={this.updatelevel} type='text' />
+            <Button variant='primary' type='submit' value='update'>Update Now</Button>
+          </Form>
         }
       </div>
     )

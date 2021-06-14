@@ -5,7 +5,7 @@ export class Header extends Component {
   render() {
     return (
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
           <Container>
             <Navbar.Brand href="/">Digimon</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
